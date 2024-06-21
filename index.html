@@ -77,7 +77,7 @@
         header h1 {
             margin: 0;
             color: #ff77cd;
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 900;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -91,7 +91,7 @@
         header p {
             margin: 0.5rem 0 0;
             color: #ff99e6;
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
 
         nav {
@@ -108,7 +108,7 @@
             color: #e0e0e0;
             text-decoration: none;
             padding: 0.5rem 1rem;
-            margin: 0 0.5rem;
+            margin: 0.5rem;
             border-radius: 4px;
             transition: background 0.3s, color 0.3s, box-shadow 0.3s;
             font-weight: 600;
@@ -131,19 +131,19 @@
         }
 
         .container h1 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin: 0;
             color: #ffffff;
         }
 
         .container p {
-            font-size: 1.2rem;
+            font-size: 1rem;
             margin: 0.5rem 0 2rem;
             color: #dcdcdc;
         }
 
         .highlight-text {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: #ff99e6;
             background: #333;
             padding: 1rem;
@@ -204,11 +204,13 @@
             left: 50%;
             transform: translateX(-50%);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            font-size: 0.9rem;
         }
 
         .prices-block h3 {
             color: #ff77cd;
             margin-top: 1rem;
+            font-size: 1.2rem;
         }
 
         .prices-block:hover {
@@ -220,6 +222,7 @@
             list-style: none;
             padding: 0;
             color: #dcdcdc;
+            font-size: 0.9rem;
         }
 
         .prices-list li {
@@ -236,7 +239,7 @@
         }
 
         .prices-block .price {
-            font-size: 2rem;
+            font-size: 1.5rem;
             margin: 1rem 0;
             color: #ffffff;
         }
@@ -245,7 +248,7 @@
             display: inline-block;
             padding: 0.5rem 1rem;
             margin-top: 1rem;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: bold;
             color: #ffffff;
             background: linear-gradient(135deg, #ff77cd, #9f00ff);
@@ -297,70 +300,13 @@
         }
 
         .background-image-left {
-            position: absolute;
-            top: 50%;
-            left: -350px;
-            transform: translateY(-50%);
-            opacity: 0.8;
-            width: 300px;
-            pointer-events: none;
-            animation: glow 1.5s infinite alternate;
-            z-index: -1;
+            display: none;
         }
 
         .background-image-right {
-            position: absolute;
-            top: 85%;
-            right: -320px;
-            transform: translateY(-50%);
-            opacity: 0.8;
-            width: 300px;
-            pointer-events: none;
-            animation: glow 1.5s infinite alternate;
-            z-index: -1;
+            display: none;
         }
 
-        @keyframes glow {
-            from {
-                filter: drop-shadow(0 0 10px #ff77cd);
-            }
-            to {
-                filter: drop-shadow(0 0 20px #ff77cd);
-            }
-        }
-
-        @media (max-width: 800px) {
-            header h1 {
-                font-size: 2rem;
-            }
-
-            nav a {
-                padding: 0.5rem;
-            }
-
-            .container h1 {
-                font-size: 2rem;
-            }
-
-            .highlight-text {
-                font-size: 1.2rem;
-            }
-
-            .prices-container {
-                flex-direction: column;
-            }
-
-            .prices-block {
-                min-width: 100%;
-            }
-
-            .background-image-left,
-            .background-image-right {
-                display: none;
-            }
-        }
-
-        
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
@@ -437,7 +383,7 @@
         .language-container {
             position: fixed;
             top: 20px;
-            left: 41%;
+            left: 50%;
             transform: translateX(-50%);
             background: rgba(0, 0, 0, 0.8);
             padding: 1rem;
@@ -445,11 +391,10 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             text-align: center;
             opacity: 0;
-            transform: translateY(-20px);
             transition: opacity 1s ease-in-out, transform 1s ease-in-out;
             z-index: 10000;
         }
-        
+
         .language-container.fade-in {
             opacity: 1;
             transform: translateY(0);
@@ -511,6 +456,155 @@
             transform: scale(0.95);
             box-shadow: 0 0 5px #ff77cd;
         }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .bar {
+            height: 4px;
+            width: 25px;
+            background-color: #ff77cd;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+        }
+
+        @media (max-width: 800px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            nav {
+                position: relative;
+            }
+
+            .hamburger {
+                display: flex;
+                position: absolute;
+                right: 20px;
+                top: 15px;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #3f3e3e;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                z-index: 999;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            nav a {
+                padding: 1rem;
+                width: 100%;
+                text-align: center;
+                box-sizing: border-box;
+                border-top: 1px solid #ff77cd;
+            }
+
+            .container h1 {
+                font-size: 1.5rem;
+            }
+
+            .highlight-text {
+                font-size: 1rem;
+            }
+
+            .prices-container {
+                flex-direction: column;
+            }
+
+            .prices-block {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 1.5rem 0.5rem;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            header p {
+                font-size: 0.9rem;
+            }
+
+            nav {
+                flex-direction: column;
+            }
+
+            nav a {
+                padding: 0.3rem 0.5rem;
+                font-size: 0.9rem;
+            }
+
+            .container {
+                padding: 1rem 0.5rem;
+            }
+
+            .container h1 {
+                font-size: 1.2rem;
+            }
+
+            .container p {
+                font-size: 0.9rem;
+            }
+
+            .highlight-text {
+                font-size: 0.9rem;
+                padding: 0.8rem;
+            }
+
+            .section {
+                padding: 0.8rem;
+            }
+
+            .section h2 {
+                font-size: 1.3rem;
+            }
+
+            .prices-block .title {
+                font-size: 0.8rem;
+                padding: 0.3rem 0.5rem;
+            }
+
+            .prices-block h3 {
+                font-size: 1rem;
+            }
+
+            .prices-block .price {
+                font-size: 1.2rem;
+            }
+
+            .buy-button {
+                font-size: 0.9rem;
+                padding: 0.3rem 0.5rem;
+            }
+
+            .discord-info a {
+                font-size: 0.9rem;
+            }
+
+            footer {
+                font-size: 0.8rem;
+            }
+        }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/21.8.15/i18next.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next-browser-languagedetector/6.1.0/i18nextBrowserLanguageDetector.min.js"></script>
@@ -523,11 +617,18 @@
     </header>
 
     <nav class="hidden">
-        <a href="#accueil" id="nav-accueil" data-i18n="nav_home">Accueil</a>
-        <a href="#services" id="nav-services" data-i18n="nav_services">Services</a>
-        <a href="#prices" id="nav-prices" data-i18n="nav_prices">Tarifs</a>
-        <a href="#tournaments" id="nav-tournaments" data-i18n="nav_tournaments">Tournois</a>
-        <a href="#contact" id="nav-contact" data-i18n="nav_contact">Contact</a>
+        <div class="hamburger" id="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="nav-menu" id="nav-menu">
+            <a href="#accueil" id="nav-accueil" data-i18n="nav_home">Accueil</a>
+            <a href="#services" id="nav-services" data-i18n="nav_services">Services</a>
+            <a href="#prices" id="nav-prices" data-i18n="nav_prices">Tarifs</a>
+            <a href="#tournaments" id="nav-tournaments" data-i18n="nav_tournaments">Tournois</a>
+            <a href="#contact" id="nav-contact" data-i18n="nav_contact">Contact</a>
+        </div>
     </nav>
 
     <div class="container hidden">
@@ -540,7 +641,6 @@
         <section class="section hidden" id="prices">
             <h2 data-i18n="prices">Tarifs</h2>
             <div class="prices-container hidden">
-                <img src="https://www.freepngimg.com/thumb/fortnite/107746-fortnite-skin-png-file-hd.png" alt="Fortnite Skin Left" class="background-image-left">
                 <div class="prices-block hidden">
                     <div class="title" data-i18n="standard">Standard</div>
                     <h3 data-i18n="standard_offer">Offre je joue sur votre compte</h3>
@@ -594,7 +694,6 @@
 
         <section class="section hidden" id="tournaments">
             <h2 data-i18n="tournaments">Tournois</h2>
-            <img src="https://www.pngmart.com/files/12/Fortnite-Skin-PNG-Transparent-Image.png" alt="Fortnite Skin Right" class="background-image-right">
             <p data-i18n="tournaments_description">Je joue sur votre compte pour faire le tournois le prix dépend du tournois, rejoignez le discord pour en savoir plus.</p>
         </section>
 
@@ -624,187 +723,179 @@
     <button class="change-language-button" id="change-language-button">Change Language</button>
 
     <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const loader = document.querySelector('.loader');
-
-    
-    i18next
-        .use(i18nextBrowserLanguageDetector)
-        .init({
-            detection: {
-                
-                order: ['navigator', 'htmlTag', 'cookie', 'localStorage', 'sessionStorage', 'querystring', 'subdomain'],
-                caches: ['localStorage', 'cookie']
-            },
-            fallbackLng: 'en',
-            resources: {
-                en: {
-                    translation: {
-                        "welcome": "Welcome to smurf.exe",
-                        "service": "The best smurf service for Fortnite",
-                        "change_language": "Would you like to keep this language or change?",
-                        "keep": "Keep",
-                        "change": "Change",
-                        "nav_home": "Home",
-                        "nav_services": "Services",
-                        "nav_prices": "Prices",
-                        "nav_tournaments": "Tournaments",
-                        "nav_contact": "Contact",
-                        "services": "Services",
-                        "services_description": "We offer smurf services to boost your Fortnite accounts. Whether you want to reach a specific level or play with a pro, we have what you need.",
-                        "prices": "Prices",
-                        "standard": "Standard",
-                        "standard_offer": "Offer I play on your account",
-                        "premium": "Premium",
-                        "premium_offer": "Offer I play with you",
-                        "exclusive": "Exclusive",
-                        "exclusive_offer": "Offer skip the queue - 24h",
-                        "buy_now": "Buy now",
-                        "tournaments": "Tournaments",
-                        "tournaments_description": "I play on your account to participate in the tournament. The price depends on the tournament, join the Discord for more information.",
-                        "contact": "Contact",
-                        "contact_description": "Join our Discord server for more information and real-time assistance.",
-                        "join_discord": "Join our Discord",
-                        "bronze_price": "2.99 $",
-                        "silver_price": "5.99 $",
-                        "gold_price": "8.99 $",
-                        "platinum_price": "14.99 $",
-                        "diamond_price": "11.99 $",
-                        "elite_price": "14.99 $",
-                        "champions_price": "34.99 $",
-                        "unreal_price": "49.99 $",
-                        "price_range_standard": "$ 2.99 - 49.99 USD",
-                        "bronze_price_premium": "4.99 $",
-                        "silver_price_premium": "7.99 $",
-                        "gold_price_premium": "12.99 $",
-                        "platinum_price_premium": "17.99 $",
-                        "diamond_price_premium": "14.99 $",
-                        "elite_price_premium": "24.99 $",
-                        "champions_price_premium": "49.99 $",
-                        "unreal_price_premium": "69.99 $",
-                        "price_range_premium": "$ 4.99 - 69.99 USD",
-                        "bronze_price_exclusive": "6.99 $",
-                        "silver_price_exclusive": "10.99 $",
-                        "gold_price_exclusive": "15.99 $",
-                        "platinum_price_exclusive": "24.99 $",
-                        "diamond_price_exclusive": "19.99 $",
-                        "elite_price_exclusive": "29.99 $",
-                        "champions_price_exclusive": "59.99 $",
-                        "unreal_price_exclusive": "79.99 $",
-                        "price_range_exclusive": "$ 6.99 - 79.99 USD"
+        document.addEventListener('DOMContentLoaded', function () {
+            const loader = document.querySelector('.loader');
+        
+            i18next
+                .use(i18nextBrowserLanguageDetector)
+                .init({
+                    detection: {
+                        order: ['navigator', 'htmlTag', 'cookie', 'localStorage', 'sessionStorage', 'querystring', 'subdomain'],
+                        caches: ['localStorage', 'cookie']
+                    },
+                    fallbackLng: 'en',
+                    resources: {
+                        en: {
+                            translation: {
+                                "welcome": "Welcome to smurf.exe",
+                                "service": "The best smurf service for Fortnite",
+                                "change_language": "Would you like to keep this language or change?",
+                                "keep": "Keep",
+                                "change": "Change",
+                                "nav_home": "Home",
+                                "nav_services": "Services",
+                                "nav_prices": "Prices",
+                                "nav_tournaments": "Tournaments",
+                                "nav_contact": "Contact",
+                                "services": "Services",
+                                "services_description": "We offer smurf services to boost your Fortnite accounts. Whether you want to reach a specific level or play with a pro, we have what you need.",
+                                "prices": "Prices",
+                                "standard": "Standard",
+                                "standard_offer": "Offer I play on your account",
+                                "premium": "Premium",
+                                "premium_offer": "Offer I play with you",
+                                "exclusive": "Exclusive",
+                                "exclusive_offer": "Offer skip the queue - 24h",
+                                "buy_now": "Buy now",
+                                "tournaments": "Tournaments",
+                                "tournaments_description": "I play on your account to participate in the tournament. The price depends on the tournament, join the Discord for more information.",
+                                "contact": "Contact",
+                                "contact_description": "Join our Discord server for more information and real-time assistance.",
+                                "join_discord": "Join our Discord",
+                                "bronze_price": "2.99 $",
+                                "silver_price": "5.99 $",
+                                "gold_price": "8.99 $",
+                                "platinum_price": "14.99 $",
+                                "diamond_price": "11.99 $",
+                                "elite_price": "14.99 $",
+                                "champions_price": "34.99 $",
+                                "unreal_price": "49.99 $",
+                                "price_range_standard": "$ 2.99 - 49.99 USD",
+                                "bronze_price_premium": "4.99 $",
+                                "silver_price_premium": "7.99 $",
+                                "gold_price_premium": "12.99 $",
+                                "platinum_price_premium": "17.99 $",
+                                "diamond_price_premium": "14.99 $",
+                                "elite_price_premium": "24.99 $",
+                                "champions_price_premium": "49.99 $",
+                                "unreal_price_premium": "69.99 $",
+                                "price_range_premium": "$ 4.99 - 69.99 USD",
+                                "bronze_price_exclusive": "6.99 $",
+                                "silver_price_exclusive": "10.99 $",
+                                "gold_price_exclusive": "15.99 $",
+                                "platinum_price_exclusive": "24.99 $",
+                                "diamond_price_exclusive": "19.99 $",
+                                "elite_price_exclusive": "29.99 $",
+                                "champions_price_exclusive": "59.99 $",
+                                "unreal_price_exclusive": "79.99 $",
+                                "price_range_exclusive": "$ 6.99 - 79.99 USD"
+                            }
+                        },
+                        fr: {
+                            translation: {
+                                "welcome": "Bienvenue sur smurf.exe",
+                                "service": "Le meilleur service de Smurf pour Fortnite",
+                                "change_language": "Voulez-vous garder cette langue ou changer?",
+                                "keep": "Garder",
+                                "change": "Changer",
+                                "nav_home": "Accueil",
+                                "nav_services": "Services",
+                                "nav_prices": "Tarifs",
+                                "nav_tournaments": "Tournois",
+                                "nav_contact": "Contact",
+                                "services": "Services",
+                                "services_description": "Nous proposons des services de Smurf pour booster vos comptes Fortnite. Que vous souhaitiez atteindre un niveau spécifique ou jouer avec un pro, nous avons ce qu'il vous faut.",
+                                "prices": "Tarifs",
+                                "standard": "Standard",
+                                "standard_offer": "Offre je joue sur votre compte",
+                                "premium": "Premium",
+                                "premium_offer": "Offre je joue avec vous",
+                                "exclusive": "Exclusifs",
+                                "exclusive_offer": "Offre passez devant tout le monde -24h",
+                                "buy_now": "Acheter maintenant",
+                                "tournaments": "Tournois",
+                                "tournaments_description": "Je joue sur votre compte pour faire le tournois le prix dépend du tournois, rejoignez le discord pour en savoir plus.",
+                                "contact": "Contact",
+                                "contact_description": "Rejoignez notre serveur Discord pour plus d'informations et assistance en temps réel.",
+                                "join_discord": "Rejoindre notre Discord",
+                                "bronze_price": "2.99 €",
+                                "silver_price": "5.99 €",
+                                "gold_price": "8.99 €",
+                                "platinum_price": "14.99 €",
+                                "diamond_price": "11.99 €",
+                                "elite_price": "14.99 €",
+                                "champions_price": "34.99 €",
+                                "unreal_price": "49.99 €",
+                                "price_range_standard": "€ 2.99 - 49.99 EUR",
+                                "bronze_price_premium": "4.99 €",
+                                "silver_price_premium": "7.99 €",
+                                "gold_price_premium": "12.99 €",
+                                "platinum_price_premium": "17.99 €",
+                                "diamond_price_premium": "14.99 €",
+                                "elite_price_premium": "24.99 €",
+                                "champions_price_premium": "49.99 €",
+                                "unreal_price_premium": "69.99 €",
+                                "price_range_premium": "€ 4.99 - 69.99 EUR",
+                                "bronze_price_exclusive": "6.99 €",
+                                "silver_price_exclusive": "10.99 €",
+                                "gold_price_exclusive": "15.99 €",
+                                "platinum_price_exclusive": "24.99 €",
+                                "diamond_price_exclusive": "19.99 €",
+                                "elite_price_exclusive": "29.99 €",
+                                "champions_price_exclusive": "59.99 €",
+                                "unreal_price_exclusive": "79.99 €",
+                                "price_range_exclusive": "€ 6.99 - 79.99 EUR"
+                            }
+                        }
                     }
-                },
-                fr: {
-                    translation: {
-                        "welcome": "Bienvenue sur smurf.exe",
-                        "service": "Le meilleur service de Smurf pour Fortnite",
-                        "change_language": "Voulez-vous garder cette langue ou changer?",
-                        "keep": "Garder",
-                        "change": "Changer",
-                        "nav_home": "Accueil",
-                        "nav_services": "Services",
-                        "nav_prices": "Tarifs",
-                        "nav_tournaments": "Tournois",
-                        "nav_contact": "Contact",
-                        "services": "Services",
-                        "services_description": "Nous proposons des services de Smurf pour booster vos comptes Fortnite. Que vous souhaitiez atteindre un niveau spécifique ou jouer avec un pro, nous avons ce qu'il vous faut.",
-                        "prices": "Tarifs",
-                        "standard": "Standard",
-                        "standard_offer": "Offre je joue sur votre compte",
-                        "premium": "Premium",
-                        "premium_offer": "Offre je joue avec vous",
-                        "exclusive": "Exclusifs",
-                        "exclusive_offer": "Offre passez devant tout le monde -24h",
-                        "buy_now": "Acheter maintenant",
-                        "tournaments": "Tournois",
-                        "tournaments_description": "Je joue sur votre compte pour faire le tournois le prix dépend du tournois, rejoignez le discord pour en savoir plus.",
-                        "contact": "Contact",
-                        "contact_description": "Rejoignez notre serveur Discord pour plus d'informations et assistance en temps réel.",
-                        "join_discord": "Rejoindre notre Discord",
-                        "bronze_price": "2.99 €",
-                        "silver_price": "5.99 €",
-                        "gold_price": "8.99 €",
-                        "platinum_price": "14.99 €",
-                        "diamond_price": "11.99 €",
-                        "elite_price": "14.99 €",
-                        "champions_price": "34.99 €",
-                        "unreal_price": "49.99 €",
-                        "price_range_standard": "€ 2.99 - 49.99 EUR",
-                        "bronze_price_premium": "4.99 €",
-                        "silver_price_premium": "7.99 €",
-                        "gold_price_premium": "12.99 €",
-                        "platinum_price_premium": "17.99 €",
-                        "diamond_price_premium": "14.99 €",
-                        "elite_price_premium": "24.99 €",
-                        "champions_price_premium": "49.99 €",
-                        "unreal_price_premium": "69.99 €",
-                        "price_range_premium": "€ 4.99 - 69.99 EUR",
-                        "bronze_price_exclusive": "6.99 €",
-                        "silver_price_exclusive": "10.99 €",
-                        "gold_price_exclusive": "15.99 €",
-                        "platinum_price_exclusive": "24.99 €",
-                        "diamond_price_exclusive": "19.99 €",
-                        "elite_price_exclusive": "29.99 €",
-                        "champions_price_exclusive": "59.99 €",
-                        "unreal_price_exclusive": "79.99 €",
-                        "price_range_exclusive": "€ 6.99 - 79.99 EUR"
-                    }
+                }, function (err, t) {
+                    updateContent();
+                    showChangeLanguagePrompt();
+                });
+        
+            function updateContent() {
+                document.querySelectorAll('[data-i18n]').forEach(element => {
+                    element.innerText = i18next.t(element.getAttribute('data-i18n'));
+                });
+            }
+        
+            function showChangeLanguagePrompt() {
+                if (!document.querySelector('.language-container')) {
+                    const changeLangContainer = document.createElement('div');
+                    changeLangContainer.classList.add('language-container');
+                    changeLangContainer.innerHTML = `
+                        <p>${i18next.t('change_language')}</p>
+                        <button id="keep-lang">${i18next.t('keep')}</button>
+                        <button id="change-lang">${i18next.t('change')}</button>
+                    `;
+                    document.body.appendChild(changeLangContainer);
+        
+                    setTimeout(() => {
+                        changeLangContainer.classList.add('fade-in');
+                    }, 10);
+        
+                    document.getElementById('keep-lang').addEventListener('click', () => {
+                        changeLangContainer.classList.remove('fade-in');
+                        setTimeout(() => changeLangContainer.remove(), 1000);
+                    });
+        
+                    document.getElementById('change-lang').addEventListener('click', () => {
+                        const newLang = i18next.language === 'en' ? 'fr' : 'en';
+                        i18next.changeLanguage(newLang, updateContent);
+                        changeLangContainer.classList.remove('fade-in');
+                        setTimeout(() => changeLangContainer.remove(), 1000);
+                    });
                 }
             }
-        }, function (err, t) {
-            
-            updateContent();
-            
-            showChangeLanguagePrompt();
-        });
-
-    function updateContent() {
-        document.querySelectorAll('[data-i18n]').forEach(element => {
-            element.innerText = i18next.t(element.getAttribute('data-i18n'));
-        });
-    }
-
-    function showChangeLanguagePrompt() {
-        if (!document.querySelector('.language-container')) {
-            const changeLangContainer = document.createElement('div');
-            changeLangContainer.classList.add('language-container');
-            changeLangContainer.innerHTML = `
-                <p>${i18next.t('change_language')}</p>
-                <button id="keep-lang">${i18next.t('keep')}</button>
-                <button id="change-lang">${i18next.t('change')}</button>
-            `;
-            document.body.appendChild(changeLangContainer);
-
-            
-            setTimeout(() => {
-                changeLangContainer.classList.add('fade-in');
-            }, 10);
-
-            document.getElementById('keep-lang').addEventListener('click', () => {
-                changeLangContainer.classList.remove('fade-in');
-                setTimeout(() => changeLangContainer.remove(), 1000);
-            });
-
-            document.getElementById('change-lang').addEventListener('click', () => {
+        
+            document.getElementById('change-language-button').addEventListener('click', () => {
                 const newLang = i18next.language === 'en' ? 'fr' : 'en';
                 i18next.changeLanguage(newLang, updateContent);
-                changeLangContainer.classList.remove('fade-in');
-                setTimeout(() => changeLangContainer.remove(), 1000);
             });
-        }
-    }
-
-    
-    document.getElementById('change-language-button').addEventListener('click', () => {
-        const newLang = i18next.language === 'en' ? 'fr' : 'en';
-        i18next.changeLanguage(newLang, updateContent);
-    });
         
-            
             loader.style.display = 'flex';
         
             window.addEventListener('load', () => {
-              
                 loader.style.display = 'none';
         
                 const elements = document.querySelectorAll('.hidden:not(.discord-info)');
@@ -896,9 +987,17 @@ document.addEventListener('DOMContentLoaded', function () {
                         }, 3000);
                     });
                 });
+        
+                
+                const hamburger = document.getElementById('hamburger');
+                const navMenu = document.getElementById('nav-menu');
+        
+                hamburger.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
             });
         });
-                
+         
     </script>
 </body>
 
